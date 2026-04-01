@@ -79,6 +79,51 @@ export const SAFETY_ASSURED_NEXT_LINE =
 export const SAFETY_ASSURED_FILE =
   /excellent-migrations:safety-assured-for-this-file\s+(\S+)/;
 
+/**
+ * Interface for a migration module with up/down functions.
+ * Migration files should export an `up` and `down` function.
+ *
+ * Example:
+ * ```ts
+ * import { Migration } from 'node-excellent-migrations';
+ *
+ * export const up: Migration['up'] = async (client) => {
+ *   await client.query('CREATE TABLE users (id serial PRIMARY KEY, name text)');
+ * };
+ *
+ * export const down: Migration['down'] = async (client) => {
+ *   await client.query('DROP TABLE users');
+ * };
+ * ```
+ */
+export interface Migration {
+  up: (client: MigrationClient) => Promise<void>;
+  down: (client: MigrationClient) => Promise<void>;
+}
+
+/**
+ * A thin database client passed to up/down functions.
+ * Wraps a pg Client within a transaction.
+ */
+export interface MigrationClient {
+  query(sql: string, params?: unknown[]): Promise<{ rows: unknown[] }>;
+}
+
+export interface MigrationRecord {
+  id: number;
+  name: string;
+  migratedAt: Date;
+}
+
+export interface RunnerConfig {
+  /** Directory containing migration files */
+  migrationsDir: string;
+  /** Table name to track applied migrations (default: "excellent_migrations") */
+  tableName?: string;
+  /** Schema name (default: "public") */
+  schema?: string;
+}
+
 export const DANGER_MESSAGES: Record<DangerType, string> = {
   [DangerType.COLUMN_REMOVED]:
     "Removing a column may cause errors in running application instances that still reference it. Deploy code changes first, then remove the column in a separate migration.",
