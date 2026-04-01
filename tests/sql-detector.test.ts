@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { detectSqlDangers, detectBackfillDanger } from "../src/detectors/sql-detector";
-import { DangerType } from "../src/types";
+import { detectSqlDangers, detectBackfillDanger } from "../src/detectors/sql-detector.js";
+import { DangerType } from "../src/types.js";
 
 describe("SQL Detector", () => {
   describe("column_removed", () => {

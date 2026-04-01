@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { detectAstDangers } from "../src/detectors/ast-detector";
-import { DangerType } from "../src/types";
+import { detectAstDangers } from "../src/detectors/ast-detector.js";
+import { DangerType } from "../src/types.js";
 
 describe("AST Detector", () => {
   it("detects SQL dangers inside string literals", () => {

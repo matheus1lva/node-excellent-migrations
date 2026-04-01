@@ -1,25 +1,23 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import * as path from "path";
 import * as fs from "fs";
+import { fileURLToPath } from "url";
 
-// We test the runner logic without a real database by mocking pg.
-// Integration tests with a real DB would go in a separate suite.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 describe("runner module (unit)", () => {
   it("migration file format requires up and down exports", async () => {
-    // Create a temp migration file that only has up
     const tmpDir = path.join(__dirname, "fixtures", "tmp_runner_test");
     fs.mkdirSync(tmpDir, { recursive: true });
 
-    const migrationFile = path.join(tmpDir, "001_test.js");
+    const migrationFile = path.join(tmpDir, "001_test.mjs");
     fs.writeFileSync(
       migrationFile,
-      `exports.up = async (client) => { await client.query("SELECT 1"); };`
+      `export const up = async (client) => { await client.query("SELECT 1"); };`
     );
 
     try {
-      // Dynamically require should fail our validation
-      const mod = require(migrationFile);
+      const mod = await import(new URL(`file://${migrationFile}`).href);
       expect(typeof mod.up).toBe("function");
       expect(typeof mod.down).toBe("undefined");
     } finally {
@@ -28,25 +26,25 @@ describe("runner module (unit)", () => {
     }
   });
 
-  it("migration file with both up and down loads correctly", () => {
+  it("migration file with both up and down loads correctly", async () => {
     const tmpDir = path.join(__dirname, "fixtures", "tmp_runner_test2");
     fs.mkdirSync(tmpDir, { recursive: true });
 
-    const migrationFile = path.join(tmpDir, "001_test.js");
+    const migrationFile = path.join(tmpDir, "001_test.mjs");
     fs.writeFileSync(
       migrationFile,
       `
-      exports.up = async (client) => {
+      export const up = async (client) => {
         await client.query("CREATE TABLE test (id serial PRIMARY KEY)");
       };
-      exports.down = async (client) => {
+      export const down = async (client) => {
         await client.query("DROP TABLE test");
       };
       `
     );
 
     try {
-      const mod = require(migrationFile);
+      const mod = await import(new URL(`file://${migrationFile}`).href);
       expect(typeof mod.up).toBe("function");
       expect(typeof mod.down).toBe("function");
     } finally {
@@ -67,21 +65,21 @@ describe("runner module (unit)", () => {
       },
     };
 
-    const migrationFile = path.join(tmpDir, "001_test.js");
+    const migrationFile = path.join(tmpDir, "001_test.mjs");
     fs.writeFileSync(
       migrationFile,
       `
-      exports.up = async (client) => {
+      export const up = async (client) => {
         await client.query("CREATE TABLE users (id serial PRIMARY KEY, name text)");
       };
-      exports.down = async (client) => {
+      export const down = async (client) => {
         await client.query("DROP TABLE users");
       };
       `
     );
 
     try {
-      const mod = require(migrationFile);
+      const mod = await import(new URL(`file://${migrationFile}`).href);
       await mod.up(mockClient);
       await mod.down(mockClient);
 

@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from "vitest";
-import { connect, getPool, disconnect, _resetPool } from "../src/db";
+import { connect, getPool, disconnect, _resetPool } from "../src/db.js";
 
 afterEach(() => {
   _resetPool();

@@ -1,5 +1,5 @@
 import { Pool } from "pg";
-import { getPool } from "./db";
+import { getPool } from "./db.js";
 
 export interface TableInfo {
   tableName: string;

@@ -1,15 +1,15 @@
 // Public API — Analysis
-export { analyzeFile, analyzeSource, analyzeDirectory } from "./analyzer";
-export { formatReport, hasErrors } from "./reporter";
-export { filterAssuredDangers } from "./safety-comments";
-export { detectSqlDangers, detectBackfillDanger, detectAstDangers, enhanceDangersWithSchema } from "./detectors";
+export { analyzeFile, analyzeSource, analyzeDirectory } from "./analyzer.js";
+export { formatReport, hasErrors } from "./reporter.js";
+export { filterAssuredDangers } from "./safety-comments.js";
+export { detectSqlDangers, detectBackfillDanger, detectAstDangers, enhanceDangersWithSchema } from "./detectors/index.js";
 
 // Public API — Database
-export { connect, disconnect, getPool } from "./db";
-export { inspectSchema, getApproxRowCount, tableExists, columnExists } from "./schema-inspector";
+export { connect, disconnect, getPool } from "./db.js";
+export { inspectSchema, getApproxRowCount, tableExists, columnExists } from "./schema-inspector.js";
 
 // Public API — Migration Runner
-export { migrate, rollback, status, getAppliedMigrations } from "./runner";
+export { migrate, rollback, status, getAppliedMigrations } from "./runner.js";
 
 // Types
 export {
@@ -23,5 +23,5 @@ export {
   MigrationClient,
   MigrationRecord,
   RunnerConfig,
-} from "./types";
-export type { SchemaSnapshot, TableInfo, ColumnInfo, IndexInfo, ConstraintInfo } from "./schema-inspector";
+} from "./types.js";
+export type { SchemaSnapshot, TableInfo, ColumnInfo, IndexInfo, ConstraintInfo } from "./schema-inspector.js";

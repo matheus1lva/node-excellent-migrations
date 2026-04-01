@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
-import { AnalysisResult, Config, DEFAULT_CONFIG, Danger } from "./types";
-import { detectSqlDangers, detectBackfillDanger, detectAstDangers } from "./detectors";
-import { filterAssuredDangers } from "./safety-comments";
+import { AnalysisResult, Config, DEFAULT_CONFIG, Danger } from "./types.js";
+import { detectSqlDangers, detectBackfillDanger, detectAstDangers } from "./detectors/index.js";
+import { filterAssuredDangers } from "./safety-comments.js";
 
 const SQL_EXTENSIONS = new Set([".sql"]);
 const JS_TS_EXTENSIONS = new Set([".js", ".ts", ".mjs", ".cjs", ".mts", ".cts"]);

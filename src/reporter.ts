@@ -1,4 +1,4 @@
-import { AnalysisResult, DangerSeverity, DangerType, Config, DEFAULT_CONFIG } from "./types";
+import { AnalysisResult, DangerSeverity, DangerType, Config, DEFAULT_CONFIG } from "./types.js";
 
 interface ReportOptions {
   /** Use ANSI colors in output (default: true) */

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { filterAssuredDangers } from "../src/safety-comments";
-import { Danger, DangerType, DANGER_MESSAGES } from "../src/types";
+import { filterAssuredDangers } from "../src/safety-comments.js";
+import { Danger, DangerType, DANGER_MESSAGES } from "../src/types.js";
 
 function makeDanger(type: DangerType, line?: number): Danger {
   return { type, message: DANGER_MESSAGES[type], line };

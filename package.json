@@ -23,6 +23,7 @@
     "sql",
     "lint"
   ],
+  "type": "module",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.0",

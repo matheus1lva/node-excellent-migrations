@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { formatReport, hasErrors } from "../src/reporter";
-import { AnalysisResult, DangerType, DANGER_MESSAGES } from "../src/types";
+import { formatReport, hasErrors } from "../src/reporter.js";
+import { AnalysisResult, DangerType, DANGER_MESSAGES } from "../src/types.js";
 
 describe("Reporter", () => {
   it("reports no dangers", () => {

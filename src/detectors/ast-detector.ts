@@ -1,6 +1,6 @@
 import * as ts from "typescript";
-import { Danger, DangerType, DANGER_MESSAGES } from "../types";
-import { detectSqlDangers, detectBackfillDanger } from "./sql-detector";
+import { Danger, DangerType, DANGER_MESSAGES } from "../types.js";
+import { detectSqlDangers, detectBackfillDanger } from "./sql-detector.js";
 
 /**
  * Extracts all string literals and template literals from a JS/TS source file.

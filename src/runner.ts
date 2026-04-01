@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
 import { Pool, PoolClient } from "pg";
-import { getPool } from "./db";
-import { Migration, MigrationClient, MigrationRecord, RunnerConfig } from "./types";
+import { getPool } from "./db.js";
+import { Migration, MigrationClient, MigrationRecord, RunnerConfig } from "./types.js";
 
 const DEFAULT_TABLE = "excellent_migrations";
 const DEFAULT_SCHEMA = "public";
@@ -62,8 +62,8 @@ function listMigrationFiles(dir: string): string[] {
  * Loads a migration module. Expects the file to export `up` and `down` functions.
  */
 async function loadMigration(filePath: string): Promise<Migration> {
-  // Use require for .js/.ts, with ts-node or similar loader expected for .ts
-  const mod = require(filePath);
+  const fileUrl = new URL(`file://${path.resolve(filePath)}`);
+  const mod = await import(fileUrl.href);
 
   if (typeof mod.up !== "function") {
     throw new Error(`Migration ${filePath} does not export an 'up' function.`);

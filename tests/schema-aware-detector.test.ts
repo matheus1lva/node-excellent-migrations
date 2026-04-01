@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { enhanceDangersWithSchema } from "../src/detectors/schema-aware-detector";
-import { Danger, DangerType, DANGER_MESSAGES } from "../src/types";
+import { enhanceDangersWithSchema } from "../src/detectors/schema-aware-detector.js";
+import { Danger, DangerType, DANGER_MESSAGES } from "../src/types.js";
 
 /**
  * Creates a mock Pool that returns controlled results for specific queries.

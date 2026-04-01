@@ -2,11 +2,11 @@
 
 import * as path from "path";
 import * as fs from "fs";
-import { analyzeFile, analyzeDirectory } from "./analyzer";
-import { formatReport, hasErrors } from "./reporter";
-import { Config, DangerType } from "./types";
-import { connect, disconnect } from "./db";
-import { migrate, rollback, status } from "./runner";
+import { analyzeFile, analyzeDirectory } from "./analyzer.js";
+import { formatReport, hasErrors } from "./reporter.js";
+import { Config, DangerType } from "./types.js";
+import { connect, disconnect } from "./db.js";
+import { migrate, rollback, status } from "./runner.js";
 
 const USAGE = `
 node-excellent-migrations - Database migration safety analyzer and runner

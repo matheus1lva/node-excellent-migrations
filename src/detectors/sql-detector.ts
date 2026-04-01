@@ -1,4 +1,4 @@
-import { Danger, DangerType, DANGER_MESSAGES } from "../types";
+import { Danger, DangerType, DANGER_MESSAGES } from "../types.js";
 
 /**
  * Patterns for detecting dangerous SQL operations.

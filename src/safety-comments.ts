@@ -3,7 +3,7 @@ import {
   DangerType,
   SAFETY_ASSURED_NEXT_LINE,
   SAFETY_ASSURED_FILE,
-} from "./types";
+} from "./types.js";
 
 /**
  * Parses safety assurance comments from a migration file and filters out

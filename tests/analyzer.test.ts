@@ -1,8 +1,10 @@
 import { describe, it, expect } from "vitest";
 import * as path from "path";
-import { analyzeFile, analyzeSource, analyzeDirectory } from "../src/analyzer";
-import { DangerType } from "../src/types";
+import { fileURLToPath } from "url";
+import { analyzeFile, analyzeSource, analyzeDirectory } from "../src/analyzer.js";
+import { DangerType } from "../src/types.js";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURES = path.join(__dirname, "fixtures");
 
 describe("analyzeFile", () => {

@@ -1,6 +1,6 @@
 import { Pool } from "pg";
-import { Danger, DangerType, DANGER_MESSAGES } from "../types";
-import { getApproxRowCount, tableExists, columnExists } from "../schema-inspector";
+import { Danger, DangerType, DANGER_MESSAGES } from "../types.js";
+import { getApproxRowCount, tableExists, columnExists } from "../schema-inspector.js";
 
 /**
  * Extracts table name from common SQL patterns.
