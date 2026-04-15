@@ -1,41 +1,20 @@
 {
-  "name": "node-excellent-migrations",
-  "version": "0.1.0",
-  "description": "Detect dangerous operations in database migrations — inspired by excellent_migrations for Elixir",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "bin": {
-    "node-excellent-migrations": "dist/cli.js"
-  },
-  "scripts": {
-    "build": "tsc",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "lint": "tsc --noEmit"
-  },
-  "keywords": [
-    "migration",
-    "database",
-    "safety",
-    "knex",
-    "typeorm",
-    "sequelize",
-    "sql",
-    "lint"
-  ],
+  "name": "node-excellent-migrations-monorepo",
+  "private": true,
   "type": "module",
-  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b packages/core packages/eslint-plugin",
+    "test": "npm run build && vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc -b packages/core packages/eslint-plugin --pretty false"
+  },
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@types/pg": "^8.20.0",
     "typescript": "^5.3.0",
     "vitest": "^1.2.0"
-  },
-  "dependencies": {
-    "pg": "^8.20.0",
-    "typescript": "^5.3.0"
-  },
-  "engines": {
-    "node": ">=18"
   }
 }

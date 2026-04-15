@@ -1,11 +1,14 @@
 {
+  "files": [],
+  "references": [
+    { "path": "./packages/core" },
+    { "path": "./packages/eslint-plugin" }
+  ],
   "compilerOptions": {
     "target": "ES2022",
     "module": "Node16",
     "moduleResolution": "Node16",
     "lib": ["ES2022"],
-    "outDir": "dist",
-    "rootDir": "src",
     "strict": true,
     "declaration": true,
     "declarationMap": true,
@@ -13,7 +16,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "tests"]
+  }
 }

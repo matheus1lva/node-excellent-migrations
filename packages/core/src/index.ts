@@ -10,6 +10,13 @@ export { inspectSchema, getApproxRowCount, tableExists, columnExists } from "./s
 
 // Public API — Migration Runner
 export { migrate, rollback, status, getAppliedMigrations } from "./runner.js";
+export { findConfigFile, loadProjectConfig, CONFIG_FILE_NAME } from "./config.js";
+export {
+  createMigration,
+  initProject,
+  formatMigrationTimestamp,
+  slugifyMigrationName,
+} from "./creator.js";
 
 // Types
 export {
@@ -22,6 +29,9 @@ export {
   Migration,
   MigrationClient,
   MigrationRecord,
+  MigrationExtension,
+  ProjectConfig,
+  DEFAULT_PROJECT_CONFIG,
   RunnerConfig,
 } from "./types.js";
 export type { SchemaSnapshot, TableInfo, ColumnInfo, IndexInfo, ConstraintInfo } from "./schema-inspector.js";

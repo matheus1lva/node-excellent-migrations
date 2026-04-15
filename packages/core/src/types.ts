@@ -124,6 +124,29 @@ export interface RunnerConfig {
   schema?: string;
 }
 
+export type MigrationExtension = ".js" | ".mjs" | ".cjs" | ".ts";
+
+export interface ProjectConfig extends Config {
+  /** Directory containing migration files */
+  migrationsDir?: string;
+  /** Database connection string */
+  databaseUrl?: string;
+  /** Table name to track applied migrations */
+  tableName?: string;
+  /** Schema name for the migrations table */
+  schema?: string;
+  /** File extension used when generating new migrations */
+  migrationExtension?: MigrationExtension;
+}
+
+export const DEFAULT_PROJECT_CONFIG: ProjectConfig = {
+  ...DEFAULT_CONFIG,
+  migrationsDir: "./migrations",
+  tableName: "excellent_migrations",
+  schema: "public",
+  migrationExtension: ".mjs",
+};
+
 export const DANGER_MESSAGES: Record<DangerType, string> = {
   [DangerType.COLUMN_REMOVED]:
     "Removing a column may cause errors in running application instances that still reference it. Deploy code changes first, then remove the column in a separate migration.",
