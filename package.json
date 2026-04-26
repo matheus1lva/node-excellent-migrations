@@ -6,7 +6,9 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc -b packages/core packages/eslint-plugin",
+    "build": "bun run --filter '*' build",
+    "build:core": "bun run --filter node-excellent-migrations build",
+    "build:eslint-plugin": "bun run --filter eslint-plugin-node-excellent-migrations build",
     "test": "npm run build && vitest run",
     "test:watch": "vitest",
     "lint": "tsc -b packages/core packages/eslint-plugin --pretty false"
