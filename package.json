@@ -2,6 +2,9 @@
   "name": "node-excellent-migrations-monorepo",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "tsc -b packages/core packages/eslint-plugin",
     "test": "npm run build && vitest run",
