@@ -1,4 +1,4 @@
-import { DangerType } from "../../core/dist/index.js";
+import { DangerType } from "node-excellent-migrations";
 import {
   createDangerRule,
   noDangerousMigrationRule,
