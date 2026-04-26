@@ -15,6 +15,9 @@
   "bin": {
     "node-excellent-migrations": "dist/cli.js"
   },
+  "scripts": {
+    "build": "tsc -b"
+  },
   "files": [
     "dist",
     "README.md",

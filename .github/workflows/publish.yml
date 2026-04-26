@@ -45,7 +45,8 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build
+      - name: Build core package
+        working-directory: packages/core
         run: bun run build
 
       - name: Publish core package
@@ -72,7 +73,8 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build
+      - name: Build ESLint plugin package
+        working-directory: packages/eslint-plugin
         run: bun run build
 
       - name: Publish ESLint plugin package
