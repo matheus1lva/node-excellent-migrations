@@ -86,8 +86,12 @@ jobs:
 
       - name: Publish core package
         working-directory: packages/core
-        run: bun publish --access public
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish ESLint plugin package
         working-directory: packages/eslint-plugin
-        run: bun publish --access public
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
