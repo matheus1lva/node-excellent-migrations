@@ -49,11 +49,12 @@ jobs:
         working-directory: packages/core
         run: bun run build
 
+      - name: Configure npm authentication
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Publish core package
         working-directory: packages/core
         run: bun publish --access public
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-eslint-plugin:
     needs: verify
@@ -77,8 +78,9 @@ jobs:
         working-directory: packages/eslint-plugin
         run: bun run build
 
+      - name: Configure npm authentication
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Publish ESLint plugin package
         working-directory: packages/eslint-plugin
         run: bun publish --access public
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
