@@ -2,7 +2,7 @@ import {
   analyzeSource,
   Config,
   DangerType,
-} from "../../../core/dist/index.js";
+} from "node-excellent-migrations";
 import { RuleModule } from "../types.js";
 
 interface RuleOptions {

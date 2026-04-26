@@ -1,15 +1,24 @@
 {
   "name": "eslint-plugin-node-excellent-migrations",
   "version": "0.1.0",
-  "description": "ESLint rules powered by node-excellent-migrations analysis",
+  "description": "ESLint rules that detect dangerous database migration patterns, powered by node-excellent-migrations",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "dependencies": {
-    "node-excellent-migrations": "workspace:*"
+    "node-excellent-migrations": "workspace:^"
   },
   "peerDependencies": {
     "eslint": "^8.0.0 || ^9.0.0"
@@ -17,12 +26,32 @@
   "keywords": [
     "eslint",
     "eslintplugin",
+    "eslint-plugin",
+    "migration",
     "migrations",
+    "database",
+    "postgres",
+    "postgresql",
     "sql",
-    "postgres"
+    "safety",
+    "schema"
   ],
+  "author": "matheus1lva",
   "license": "MIT",
+  "homepage": "https://github.com/matheus1lva/node-excellent-migrations/tree/main/packages/eslint-plugin#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheus1lva/node-excellent-migrations.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/matheus1lva/node-excellent-migrations/issues"
+  },
   "engines": {
     "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
